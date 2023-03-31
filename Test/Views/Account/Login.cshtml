@@ -1,0 +1,159 @@
+﻿@using Test.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            color: #fff;
+            background: #19aa8d;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .form-control, .form-control:focus, .input-group-addon {
+            border-color: #e1e1e1;
+        }
+
+        .form-control, .btn {
+            border-radius: 3px;
+        }
+
+        .login-form {
+            width: 390px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+            .login-form form {
+                color: #999;
+                border-radius: 3px;
+                margin-bottom: 15px;
+                background: #fff;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                padding: 30px;
+            }
+
+            .login-form h2 {
+                color: #333;
+                font-weight: bold;
+                margin-top: 0;
+            }
+
+            .login-form hr {
+                margin: 0 -30px 20px;
+            }
+
+            .login-form .form-group {
+                margin-bottom: 20px;
+            }
+
+            .login-form label {
+                font-weight: normal;
+                font-size: 13px;
+            }
+
+            .login-form .form-control {
+                min-height: 38px;
+                box-shadow: none !important;
+            }
+
+            .login-form .input-group-addon {
+                max-width: 42px;
+                text-align: center;
+            }
+
+            .login-form input[type="checkbox"] {
+                margin-top: 2px;
+            }
+
+            .login-form .btn {
+                font-size: 16px;
+                font-weight: bold;
+                background: #19aa8d;
+                border: none;
+                min-width: 140px;
+            }
+
+                .login-form .btn:hover, .signup-form .btn:focus {
+                    background: #179b81;
+                    outline: none;
+                }
+
+            .login-form a {
+                color: #fff;
+                text-decoration: underline;
+            }
+
+                .login-form a:hover {
+                    text-decoration: none;
+                }
+
+            .login-form form a {
+                color: #19aa8d;
+                text-decoration: none;
+            }
+
+                .login-form form a:hover {
+                    text-decoration: underline;
+                }
+
+            .login-form .fa {
+                font-size: 21px;
+            }
+
+            .login-form .fa-paper-plane {
+                font-size: 18px;
+            }
+
+            .login-form .fa-check {
+                color: #fff;
+                left: 17px;
+                top: 18px;
+                font-size: 7px;
+                position: absolute;
+            }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <h2>Login</h2>
+            <p>Please fill in this form to login!</p>
+            <hr>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
+                    <input id="Email" type="email" class="form-control" name="Email" placeholder="Email Address" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input id="Password" type="password" class="form-control" name="Password" placeholder="Password" required="required">
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-lg" value="Login">Login</button>
+            </div>
+            <div class="text-center">Don't have an account? @Html.ActionLink("Sign Up", "Register")</div>
+        }
+    </div>
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
